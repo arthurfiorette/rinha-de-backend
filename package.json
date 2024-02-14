@@ -1,0 +1,38 @@
+{
+  "name": "@arthurfiorette/rinha-de-backend",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "git@github.com:arthurfiorette/rinha-de-backend.git",
+  "author": "Arthur Fiorette <me@arthur.place>",
+  "license": "MIT",
+  "description": "Minha submissão para a rinha de backend",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@swc-node/register": "^1.8.0",
+    "@swc/helpers": "^0.5.6",
+    "@types/node": "^20.11.17",
+    "c8": "^9.1.0",
+    "typescript": "^5.3.3",
+    "undici": "^6.6.2"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "close-with-grace": "^1.2.0",
+    "fast-json-stringify": "^5.12.0",
+    "find-my-way": "^8.1.0",
+    "postgres": "^3.4.3",
+    "tslib": "^2.6.2"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node --env-file=.env --enable-source-maps dist/index.js",
+    "test": "c8 --reporter lcov --reporter text node --env-file=.env --import ./test/setup.js --enable-source-maps --test test/**/*.test.ts",
+    "test:only": "c8 --reporter lcov --reporter text node --env-file=.env --import ./test/setup.js --enable-source-maps --test-only",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --apply-unsafe .",
+    "lint:ci": "biome ci ."
+  }
+}
