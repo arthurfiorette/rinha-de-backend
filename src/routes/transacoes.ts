@@ -1,9 +1,9 @@
 import type http from 'http';
+import { credit, debit } from '../repository.js';
+import { TransacaoBody } from '../schemas/index.js';
 import type { ITransacaoBody, RouteContext } from '../schemas/types.js';
 import { parseRequestBody } from '../server/parse-body.js';
-import { TransacaoBody } from '../schemas/index.js';
 import { error } from '../util/log.js';
-import { credit, debit } from '../repository.js';
 
 export function getTransacoes(
   request: http.IncomingMessage,

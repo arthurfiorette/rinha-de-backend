@@ -1,8 +1,8 @@
-import type Ajv from 'ajv';
 import type http from 'http';
+import type Ajv from 'ajv';
 import secureJson from 'secure-json-parse';
-import { error } from '../util/log.js';
 import type { Callback } from '../schemas/types.js';
+import { error } from '../util/log.js';
 
 const SECURE_JSON_OPTIONS = { protoAction: 'error', constructorAction: 'error' } as const;
 
@@ -58,9 +58,8 @@ export function parseRequestBody<T>(
     if (!parser(parsedBody)) {
       error('Invalid JSON:', parser.errors);
       return done(
-        parser.errors
-          ?.map((e) => `${e.schemaPath} ${e.message || 'Invalid JSON'}`)
-          .join(', ') || 'Invalid JSON'
+        parser.errors?.map((e) => `${e.schemaPath} ${e.message || 'Invalid JSON'}`).join(', ') ||
+          'Invalid JSON'
       );
     }
 

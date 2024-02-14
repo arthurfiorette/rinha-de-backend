@@ -4,7 +4,7 @@ import type postgres from 'postgres';
  * The context object that is passed to each route handler.
  */
 export interface RouteContext {
-  sql: postgres.Sql<{}>;
+  sql: postgres.Sql;
 
   /**
    * Limits are never changed, thus we can cache the result of the limit query.
@@ -12,7 +12,7 @@ export interface RouteContext {
   limit_cache: { [clientId: number]: number };
 }
 
-export type Callback<T,R=void> = (err: string | null, result?: T) => R;
+export type Callback<T, R = void> = (err: string | null, result?: T) => R;
 
 export interface DbClient {
   id: number;

@@ -1,11 +1,11 @@
 import http from 'http';
 import findMyWay from 'find-my-way';
-import { getTransacoes } from '../routes/transacoes.js';
-import { getExtrato } from '../routes/extrato.js';
-import type { DbClient, RouteContext } from '../schemas/types.js';
-import { error, log } from '../util/log.js';
 import { createPostgresInstance } from '../repository.js';
+import { getExtrato } from '../routes/extrato.js';
+import { getTransacoes } from '../routes/transacoes.js';
+import type { DbClient, RouteContext } from '../schemas/types.js';
 import { Env } from '../util/env.js';
+import { error, log } from '../util/log.js';
 
 export async function createServer() {
   const router = findMyWay({

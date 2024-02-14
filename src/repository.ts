@@ -1,6 +1,6 @@
 import postgres from 'postgres';
-import { debug, log } from './util/log.js';
 import { Env } from './util/env.js';
+import { debug, log } from './util/log.js';
 
 /**
  * Creates a new PostgreSQL connection.
@@ -59,12 +59,7 @@ export function selectClientBalance(sql: postgres.Sql, clientId: number) {
   `;
 }
 
-export function credit(
-  sql: postgres.Sql,
-  clientId: number,
-  valor: number,
-  descricao: string
-) {
+export function credit(sql: postgres.Sql, clientId: number, valor: number, descricao: string) {
   type Result = {
     new_balance: number;
     error: boolean;
@@ -74,12 +69,7 @@ export function credit(
   return sql<[Result]>`SELECT * FROM credit(${clientId}, ${valor}, ${descricao})`;
 }
 
-export function debit(
-  sql: postgres.Sql,
-  clientId: number,
-  valor: number,
-  descricao: string
-) {
+export function debit(sql: postgres.Sql, clientId: number, valor: number, descricao: string) {
   type Result = {
     new_balance: number;
     error: boolean;

@@ -1,8 +1,8 @@
 import type http from 'http';
-import { ExtratoReply } from '../schemas/index.js';
-import { error } from '../util/log.js';
-import type { RouteContext } from '../schemas/types.js';
 import { selectClientBalance } from '../repository.js';
+import { ExtratoReply } from '../schemas/index.js';
+import type { RouteContext } from '../schemas/types.js';
+import { error } from '../util/log.js';
 
 export async function getExtrato(
   _request: http.IncomingMessage,
@@ -29,11 +29,11 @@ export async function getExtrato(
     response.end(
       ExtratoReply({
         saldo: {
-          total: result.balance,
+          total: result?.balance,
           data_extrato: new Date().toISOString(),
           limite: store.limit_cache[clientId]
         },
-        ultimas_transacoes: result.transactions
+        ultimas_transacoes: result?.transactions
       })
     );
   } catch (err) {
