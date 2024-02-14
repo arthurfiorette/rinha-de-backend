@@ -22,11 +22,14 @@
     "close-with-grace": "^1.2.0",
     "fast-json-stringify": "^5.12.0",
     "find-my-way": "^8.1.0",
+    "fluent-json-schema": "^4.2.1",
     "postgres": "^3.4.3",
+    "secure-json-parse": "^2.7.0",
     "tslib": "^2.6.2"
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch & node --env-file=.env --enable-source-maps --watch --watch-preserve-output dist/index.js",
     "start": "node --env-file=.env --enable-source-maps dist/index.js",
     "test": "c8 --reporter lcov --reporter text node --env-file=.env --import ./test/setup.js --enable-source-maps --test test/**/*.test.ts",
     "test:only": "c8 --reporter lcov --reporter text node --env-file=.env --import ./test/setup.js --enable-source-maps --test-only",
